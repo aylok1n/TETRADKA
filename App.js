@@ -9,6 +9,9 @@ import {HomeScreen, BookScreen} from './screens'
 const AppNavigator = createStackNavigator({
   Home: {
     screen: HomeScreen,
+    navigationOptions: {
+      title: 'TETsddsds',
+    },
   },
   YourBooks: {
     screen: BookScreen,
@@ -16,9 +19,5 @@ const AppNavigator = createStackNavigator({
 });
 
 export default createAppContainer(AppNavigator);
-
-
-
-
 
 
