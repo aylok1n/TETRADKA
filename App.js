@@ -10,7 +10,7 @@ const AppNavigator = createStackNavigator({
   Home: {
     screen: HomeScreen,
     navigationOptions: {
-      title: 'TETsddzxdczsds',
+      title: 'TETsddzxdczsываываываds',
     },
   },
   YourBooks: {
