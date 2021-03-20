@@ -1,4 +1,3 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import styled from 'styled-components/native';
 import { StyleSheet, Text, View, } from 'react-native';
@@ -12,13 +11,9 @@ const Group = ({user}) => {
    
 };
 
-export default Group
-
 Group.defaultProps = {
     items: []
 };
-
-
 
 const FullName = styled.Text`
   font-weight: 800;
@@ -42,6 +37,7 @@ const GroupItem = styled.TouchableOpacity`
   padding:10px 15px;
 `;
 
+export default Group
 
 
 
