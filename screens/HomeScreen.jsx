@@ -99,6 +99,30 @@ const DATA = [
     }
   ]
 
+// class HomeScreen extends React.Components{
+//   static navigationOptions = {
+//     title: 'TETRADKA'
+//   };
+
+//   render() {
+//     return (
+//       <Container>
+//     <SectionList
+//       sections={DATA}
+//       keyExtractor={(item, index) => index}
+//       renderItem={({ item }) => <Group {...item} /> }
+//       renderSectionHeader={({ section: {tittle} }) =>(
+//         <SectionTittle>{tittle}</SectionTittle>
+//       )}
+//     />
+//     <PlusButton style ={{shadowColor: "#000",shadowOffset: {width: 0,height: 4,},shadowOpacity: 0.5,shadowRadius: 2.5,elevation: 5,}}>
+//       <Ionicons name="ios-add" size={36} color="white" />
+//     </PlusButton>
+//   </Container> 
+//   );
+//   }
+// }
+
 const HomeScreen = () => {
     return (
         <Container>
@@ -135,4 +159,5 @@ const PlusButton = styled.TouchableOpacity`
 
 const Container = styled.View`
   flex: 1;
+  background-color: #FFFFFF;
 `;

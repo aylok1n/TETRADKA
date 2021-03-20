@@ -33,7 +33,8 @@ const GroupItem = styled.TouchableOpacity`
   flex-direction: row;
   padding: 15px 0;
   borderBottomWidth: 1px ;
-  borderColor: #f3f3f3;
+  borderRadius: 50px;
+  borderColor: #E0FFFF;
   padding:10px 15px;
 `;
 

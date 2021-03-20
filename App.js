@@ -10,7 +10,17 @@ const AppNavigator = createStackNavigator({
   Home: {
     screen: HomeScreen,
     navigationOptions: {
-      title: 'TETRADK A',
+      title: '/TETRADKA/',
+      headerTintColor: '#2A86FF',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+        fontSize: 30,
+      },
+      headerStyle: {
+        elevation: 15,
+        shadowOpacity: 12,
+        backgroundColor: '#E0FFFF',
+      }
     },
   },
   YourBooks: {
