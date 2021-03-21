@@ -1,10 +1,13 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import { StyleSheet, Text, View, } from 'react-native';
+import { Button, StyleSheet, Text, View, } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { BookScreen } from '../screens';
 
-const Group = ({user}) => {
+function Group({user, navigate}) {
+  const navigation = useNavigation();
     return (
-      <GroupItem>
+      <GroupItem onPress={() => navigation.navigate('BookScreen')}>
         <Avatar source={{uri: user.avatar}} />
         <FullName>{user.fullname}</FullName>
     </GroupItem>)

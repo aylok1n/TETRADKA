@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components/native';
 import {StyleSheet, Text, View, SectionList } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
 import Group from '../Components/Group';
 import SectionTittle from '../Components/SectionTittle'
@@ -99,47 +100,41 @@ const DATA = [
     }
   ]
 
-// class HomeScreen extends React.Components{
-//   static navigationOptions = {
-//     title: 'TETRADKA'
-//   };
-
-//   render() {
-//     return (
-//       <Container>
-//     <SectionList
-//       sections={DATA}
-//       keyExtractor={(item, index) => index}
-//       renderItem={({ item }) => <Group {...item} /> }
-//       renderSectionHeader={({ section: {tittle} }) =>(
-//         <SectionTittle>{tittle}</SectionTittle>
-//       )}
-//     />
-//     <PlusButton style ={{shadowColor: "#000",shadowOffset: {width: 0,height: 4,},shadowOpacity: 0.5,shadowRadius: 2.5,elevation: 5,}}>
-//       <Ionicons name="ios-add" size={36} color="white" />
-//     </PlusButton>
-//   </Container> 
-//   );
-//   }
-// }
-
-const HomeScreen = () => {
+function HomeScreen() {
     return (
-        <Container>
+      <Container>
       <SectionList
-        sections={DATA}
-        keyExtractor={(item, index) => index}
-        renderItem={({ item }) => <Group {...item} /> }
-        renderSectionHeader={({ section: {tittle} }) =>(
-          <SectionTittle>{tittle}</SectionTittle>
-        )}
-      />
-      <PlusButton style ={{shadowColor: "#000",shadowOffset: {width: 0,height: 4,},shadowOpacity: 0.5,shadowRadius: 2.5,elevation: 5,}}>
-        <Ionicons name="ios-add" size={36} color="white" />
-      </PlusButton>
-    </Container> 
-    );
-}
+      sections={DATA}
+      keyExtractor={(item, index) => index}
+      renderItem={({ item }) => <Group {...item} /> }
+      renderSectionHeader={({ section: {tittle} }) =>(
+        <SectionTittle>{tittle}</SectionTittle>
+      )}
+    />
+    <PlusButton style ={{shadowColor: "#000",shadowOffset: {width: 0,height: 4,},shadowOpacity: 0.5,shadowRadius: 2.5,elevation: 5,}}>
+      <Ionicons name="ios-add" size={36} color="white" />
+    </PlusButton>
+  </Container> 
+  );
+  }
+
+// const HomeScreen = () => {
+//     return (
+//         <Container>
+//       <SectionList
+//         sections={DATA}
+//         keyExtractor={(item, index) => index}
+//         renderItem={({ item }) => <Group onPress={() => navigation.navigate('BookScreen')}  {...item} /> }
+//         renderSectionHeader={({ section: {tittle} }) =>(
+//           <SectionTittle>{tittle}</SectionTittle>
+//         )}
+//       />
+//       <PlusButton style ={{shadowColor: "#000",shadowOffset: {width: 0,height: 4,},shadowOpacity: 0.5,shadowRadius: 2.5,elevation: 5,}}>
+//         <Ionicons name="ios-add" size={36} color="white" />
+//       </PlusButton>
+//     </Container> 
+//     );
+// }
 
 export default HomeScreen;
 
