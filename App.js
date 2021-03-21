@@ -53,7 +53,7 @@ function App() {
         name="BookScreen" 
         component={BookScreen}
         options={{
-          title: '/TETRADKA/',
+          title: '{tittle}',
           headerTintColor: '#2A86FF',
           headerTitleStyle: {
             fontWeight: 'bold',
