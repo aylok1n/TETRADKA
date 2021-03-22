@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components/native';
 import { Button, StyleSheet, Text, View, } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { BookScreen } from '../screens';
 
 function Group({user, navigate}) {
   const navigation = useNavigation();
