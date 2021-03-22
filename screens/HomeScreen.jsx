@@ -3,9 +3,9 @@ import styled from 'styled-components/native';
 import {StyleSheet, Text, View, SectionList } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-import DATA from '../Components/Data'
+import DATA from '../Components/DATA'
 
-import Group from '../Components/Group';
+import Books from '../Components/Books';
 import SectionTittle from '../Components/SectionTittle'
 
 
@@ -27,7 +27,7 @@ function HomeScreen({ navigation }) {
       <SectionList
       sections={DATA}
       keyExtractor={(item, index) => index}
-      renderItem={({ item }) => <Group {...item} /> }
+      renderItem={({ item }) => <Books {...item} /> }
       renderSectionHeader={({ section: {tittle} }) =>(
         <SectionTittle>{tittle}</SectionTittle>
       )}
@@ -47,14 +47,12 @@ const PlusButton = styled.TouchableOpacity`
   align-items: center;
   justify-content: center;
   border-radius:50px;
-  background-color: #00CED1;
+  background-color: #1E90FF;
   width: 64px;
   height: 64px;
   position:absolute;
   right:25px;
-  bottom:25px;
-
-  
+  bottom:25px; 
 `;
 
 const Container = styled.View`

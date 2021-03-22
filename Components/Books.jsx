@@ -3,22 +3,22 @@ import styled from 'styled-components/native';
 import { Button, StyleSheet, Text, View, } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-function Group({user, navigate}) {
+function Books({book}) {
   const navigation = useNavigation();
     return (
-      <GroupItem onPress={() => navigation.navigate('BookScreen')}>
-        <Avatar source={{uri: user.avatar}} />
-        <FullName>{user.fullname}</FullName>
-    </GroupItem>)
+      <BookItem onPress={() => navigation.navigate('BookScreen')}>
+        <Avatar source={{uri: book.avatar}} />
+        <FullName>{book.fullname}</FullName>
+    </BookItem>)
    
 };
 
-Group.defaultProps = {
+Books.defaultProps = {
     items: []
 };
 
 const FullName = styled.Text`
-  font-weight: 800;
+  font-weight: bold;
   font-size: 30px;
   text-align: center;
   margin: auto;
@@ -30,7 +30,7 @@ const Avatar = styled.Image`
   border-radius: 50px;
 `;
 
-const GroupItem = styled.TouchableOpacity`
+const BookItem = styled.TouchableOpacity`
   align-items: center;
   flex-direction: row;
   padding: 15px 0;
@@ -40,7 +40,7 @@ const GroupItem = styled.TouchableOpacity`
   padding:10px 15px;
 `;
 
-export default Group
+export default Books
 
 
 
