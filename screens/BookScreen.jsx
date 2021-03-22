@@ -42,7 +42,6 @@ const BookName  = styled.Text `
 `;
 
 const Container = styled.View`
-  margin-left: 5px;
   flex: 1; 
 
 `;
