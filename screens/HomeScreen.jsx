@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 import {StyleSheet, Text, View, SectionList } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-import DATA from '../Components/DATA'
+import DATA from '../Components/Data'
 
 import Books from '../Components/Books';
 import SectionTittle from '../Components/SectionTittle'

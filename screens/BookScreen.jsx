@@ -2,10 +2,10 @@ import React from 'react';
 import {StyleSheet, Text, View, SectionList, Button } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import styled from 'styled-components/native';
-import DATA from '../Components/DATA'
+import DATA from '../Components/Data'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-import Image from '../Components/Image'
+import Images from '../Components/Images'
 
  
 function BookScreen({user, navigation }) {
@@ -17,17 +17,13 @@ function BookScreen({user, navigation }) {
 
     });
   }, [navigation, Options]);
-    return (
-      <Container>
-        <SectionList
-          sections={DATA}
-          keyExtractor={(item, index) => index}
-          renderItem={({ item }) => <Image {...item} /> }
-    />
-        {/* <Button
-          title="На главную"
-          onPress={() => navigation.navigate('HomeScreen')}
-        /> */}
+  return (
+    <Container>
+      <SectionList
+        sections={DATA}
+        keyExtractor={(item, index) => index}
+        renderItem={({ item }) => <Images {...item} /> }
+      />
         <PencilButton style ={{shadowColor: "#000",shadowOffset: {width: 0,height: 4,},shadowOpacity: 1.5,shadowRadius: 2.5,elevation: 10,}}>
           <MaterialCommunityIcons name="pencil-outline" size={24} color="black" />
         </PencilButton>
