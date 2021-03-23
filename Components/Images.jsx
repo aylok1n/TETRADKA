@@ -9,7 +9,6 @@ function Images({book}) {
     return (
       <View onPress={() => navigation.navigate('BookScreen')}>
         <FullName>{book.fullname}</FullName>
-        <For>sadasd</For>
         <Page source={{uri: book.pages[0]}} />
         <Page source={{uri: book.pages[1]}} />
         <Page source={{uri: book.pages[2]}} />
