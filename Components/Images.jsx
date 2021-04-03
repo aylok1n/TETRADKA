@@ -10,13 +10,7 @@ function Images({book}) {
     return (
       <View onPress={() => navigation.navigate('BookScreen')}>
         <FullName>{book.fullname}</FullName>
-        {book.pages.map(page => <Page source={{uri=page}} />)}
-        {/* <Page source={{uri: book.pages[0]}} />
-        <Page source={{uri: book.pages[1]}} />
-        <Page source={{uri: book.pages[2]}} />
-        <Page source={{uri: book.pages[3]}} />
-        <Page source={{uri: book.pages[4]}} />
-        <Page source={{uri: book.pages[5]}} /> */}
+        {book.pages.map(page => <Page key={page.id} source={{uri: page}} />)}
 
         <Button
           title= "На главную"

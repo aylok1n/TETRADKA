@@ -1,6 +1,5 @@
-import React from 'react';
-
 const DATA = [  
+  
     {
       tittle: 'Ваши тетради',
       data: [
