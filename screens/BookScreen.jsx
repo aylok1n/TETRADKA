@@ -8,7 +8,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Images from '../Components/Images'
 
  
-function BookScreen({user, navigation }) {
+function BookScreen({navigation }) {
   const Options = React.useState(0);
   React.useLayoutEffect(() => {
     navigation.setOptions({
