@@ -3,7 +3,8 @@ import styled from 'styled-components/native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import {HomeScreen, BookScreen} from './screens'
+import HomeScreen from './screens/HomeScreen'
+import BookScreen from './screens/BookScreen'
 
 
 const Stack = createStackNavigator();
