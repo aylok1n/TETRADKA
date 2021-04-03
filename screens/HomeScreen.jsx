@@ -14,11 +14,13 @@ function HomeScreen({ navigation }) {
   const Options = React.useState(0);
   React.useLayoutEffect(() => {
     navigation.setOptions({
-      title: '/TETRADKA/',
+      title: 'TETRADKA',
       headerTintColor: '#2A86FF',
       headerTitleStyle: {
         fontWeight: 'bold',
-        fontSize: 30,
+        fontSize: 35,
+        marginLeft: 'auto',
+        marginRight: 'auto'
       }
     });
   }, [navigation, Options]);

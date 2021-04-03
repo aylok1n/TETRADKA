@@ -29,8 +29,8 @@ const FullName = styled.Text`
     color: #2A86FF;
     font-Weight: bold;
     font-size: 35px;
-    margin: 30px;
-    margin-left: 50px; 
+    margin: auto
+    padding: 30px
 `;
 
   export default Images;
