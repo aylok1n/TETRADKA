@@ -3,19 +3,19 @@ import styled from 'styled-components/native';
 import { Button, StyleSheet, Text, View, } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-function Books({book}) {
+function Books({items, book,}) {
   const navigation = useNavigation();
     return (
-      <BookItem onPress={() => navigation.navigate('BookScreen')}>
+      <BookItem key ={book.id} onPress={() => navigation.navigate('BookScreen')}>
         <Avatar source={{uri: book.avatar}} />
         <FullName>{book.fullname}</FullName>
-    </BookItem>)
-   
+      </BookItem>
+    )
 };
 
-Books.defaultProps = {
-    items: []
-};
+  // Books.defaultProps = {
+  //     items: []
+  // };
 
 const FullName = styled.Text`
   font-weight: bold;
