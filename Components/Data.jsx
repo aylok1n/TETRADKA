@@ -5,7 +5,7 @@ var DATA = [
       data: [
         {
           book:{
-            _id: "1",
+            id: "1",
             fullname: "Тетрадь 1",
             avatar: "https://source.unsplash.com/random/100x100?faces",
             pages: [
@@ -22,7 +22,7 @@ var DATA = [
         },
         {
           book:{
-            _id: "2",
+            id: "2",
             fullname: "Тетрадь 2",
             avatar: "https://sun7-6.userapi.com/s/v1/ig2/dvc3zsDzfRq2eTyFrVsuTDDsGGo5lzwOd1iCqM2tuhIxsscOpMkhQO1puXBAsmzjqoJCGzhw3Un3aAHQnCVEnmt8.jpg?size=50x0&quality=96&crop=1,3,1078,1078&ava=1",
             pages: [
@@ -41,7 +41,7 @@ var DATA = [
       data: [
         {
           book:{
-            _id: "3",
+            id: "3",
             fullname: "Тетрадь 3",
             avatar: "https://source.unsplash.com/random/100x100?faces",
             pages: [
@@ -56,7 +56,7 @@ var DATA = [
         },
         {
           book:{
-            _id: "2",
+            id: "4",
             fullname: "Тетрадь 4",
             avatar: "https://sun7-6.userapi.com/s/v1/ig2/dvc3zsDzfRq2eTyFrVsuTDDsGGo5lzwOd1iCqM2tuhIxsscOpMkhQO1puXBAsmzjqoJCGzhw3Un3aAHQnCVEnmt8.jpg?size=50x0&quality=96&crop=1,3,1078,1078&ava=1",
             pages: [
