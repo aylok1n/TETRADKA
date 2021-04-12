@@ -53,11 +53,12 @@ const PlusButton = styled.TouchableOpacity`
   width: 64px;
   height: 64px;
   position:absolute;
-  right:25px;
-  bottom:25px; 
+  right:15px;
+  bottom:15px; 
 `;
 
 const Container = styled.View`
+  padding: 5%;
   flex: 1;
   background-color: #FFFFFF;
 `;

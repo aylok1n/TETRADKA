@@ -17,8 +17,8 @@ function Images({book}) {
           onPress={() => navigation.navigate('HomeScreen')}
           style = {{width:160,}}
         />
-      </View>)
-     
+      </View>
+      )
   };
 
   Images.defaultProps = {
