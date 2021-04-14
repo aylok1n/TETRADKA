@@ -6,6 +6,7 @@ import DATA from '../Components/Data'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Page from '../Components/Page'
 import Images from '../Components/Images'
+import AddPage from '../Components/AddPage'
 
  
 function BookScreen({route, navigation}) {
@@ -18,38 +19,49 @@ function BookScreen({route, navigation}) {
 
     });
   }, [navigation, Options]);
-return (
-    <Container onPress={() => navigation.navigate('BookScreen')}>
-      <ScrollView style={styled.scrollView}>
-      <FullName>{itemName}</FullName>
-      {itemPages.map((page, id) => <Page key={id} source={{uri: page}} />)}
-
-      <Button
-        title= "На главную"
-        onPress={() => navigation.navigate('HomeScreen')}
-        style = {{width:16, margin: 'auto'}}
-      />
-      </ScrollView>
-      <PencilButton style ={{shadowColor: "#000",shadowOffset: {width: 0,height: 4,},shadowOpacity: 1.5,shadowRadius: 2.5,elevation: 10,}}>
-        <MaterialCommunityIcons name="pencil-outline" size={24} color="black" />
-      </PencilButton>
-    </Container>
+  if(itemPages != 0){
+    return (
+      <Container onPress={() => navigation.navigate('BookScreen')}>
+        <ScrollView style={styled.scrollView}>
+        <FullName>{itemName}</FullName>
+        
+        {itemPages.map((page, id) => <Page key={id} source={{uri: page}} />)}
+  
+        <Button
+          title= "На главную"
+          onPress={() => navigation.navigate('HomeScreen')}
+          style = {{width:16, margin: 'auto'}}
+        />
+        </ScrollView>
+        <PencilButton onPress={AddPage} style ={{shadowColor: "#000",shadowOffset: {width: 0,height: 4,},shadowOpacity: 1.5,shadowRadius: 2.5,elevation: 10,}}>
+          <MaterialCommunityIcons name="pencil-outline" size={24} color="black" />
+        </PencilButton>
+      </Container>
+      )
+  }
+  else {
+    return (
+      <Container>
+        <PencilButton onPress={AddPage} style ={{shadowColor: "#000",shadowOffset: {width: 0,height: 4,},shadowOpacity: 1.5,shadowRadius: 2.5,elevation: 10,}}>
+          <MaterialCommunityIcons name="pencil-outline" size={24} color="black" />
+        </PencilButton>
+        <ScrollView style={styled.scrollView}>
+        <FullName>{itemName}</FullName>
+        
+        <EmptyText>{itemName} пуста</EmptyText>
+  
+        {/* <Button
+          title= "На главную"
+          onPress={() => navigation.navigate('HomeScreen')}
+          style = {{width:16, margin: 'auto'}}
+        /> */}
+        </ScrollView>
+      </Container>
     )
+  }
+
 }
-// return (
-    
-//     <Container>
-//       <SectionList
-//         sections={itemPages}
-//         keyExtractor={(item, index) => index}
-//         renderItem={({ item }) => <Images {...item} /> }
-//       />
-//         <PencilButton style ={{shadowColor: "#000",shadowOffset: {width: 0,height: 4,},shadowOpacity: 1.5,shadowRadius: 2.5,elevation: 10,}}>
-//           <MaterialCommunityIcons name="pencil-outline" size={24} color="black" />
-//         </PencilButton>
-//       </Container>
-//     );
-  // }
+
 
 const BookName  = styled.Text `
   font-Weight: 800;
@@ -61,6 +73,15 @@ const Container = styled.View`
   flex: 1; 
   align-items: center;
 `;
+
+const EmptyText = styled.Text`
+  font-Weight: 400;
+  margin: auto
+  font-size: 20px;
+  align-items: center;
+  justify-content: center;
+  color: #00000F;
+`
 
 const PencilButton = styled.TouchableOpacity`
   align-items: center;
