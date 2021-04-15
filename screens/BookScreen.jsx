@@ -30,11 +30,13 @@ function BookScreen({route, navigation}) {
         <Button
           title= "На главную"
           onPress={() => navigation.navigate('HomeScreen')}
-          style = {{width:16, margin: 'auto'}}
+          style = {{width:16, padding: 10}}
         />
         </ScrollView>
-        <PencilButton onPress={AddPage} style ={{shadowColor: "#000",shadowOffset: {width: 0,height: 4,},shadowOpacity: 1.5,shadowRadius: 2.5,elevation: 10,}}>
-          <MaterialCommunityIcons name="pencil-outline" size={24} color="black" />
+        <PencilButton 
+          onPress={AddPage} 
+          style ={{shadowColor: "#000",shadowOffset: {width: 0,height: 4,},shadowOpacity: 1.5,shadowRadius: 2.5,elevation: 10,}}>
+          <MaterialCommunityIcons name="pencil-outline" size={30} color="white" />
         </PencilButton>
       </Container>
       )
