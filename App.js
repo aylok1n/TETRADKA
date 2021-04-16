@@ -5,6 +5,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import HomeScreen from './screens/HomeScreen'
 import BookScreen from './screens/BookScreen'
+import AddBookScreen from './screens/AddBookScreen'
+import AddPageScreen from './screens/AddPageScreen';
 
 
 const Stack = createStackNavigator();
@@ -22,6 +24,16 @@ function App() {
         name="BookScreen" 
         component={BookScreen}
         />
+
+        <Stack.Screen 
+        name="AddBookScreen" 
+        component={AddBookScreen}
+        />
+
+        <Stack.Screen 
+        name="AddPageScreen" 
+        component={AddPageScreen}
+        />  
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -34,7 +34,7 @@ function HomeScreen({ navigation }) {
         <SectionTittle>{tittle}</SectionTittle>
       )}
     />
-    <PlusButton style ={{shadowColor: "#000",shadowOffset: {width: 0,height: 4,},shadowOpacity: 0.5,shadowRadius: 2.5,elevation: 5,}}>
+    <PlusButton onPress={() => navigation.navigate('AddBookScreen' )} style ={{shadowColor: "#000",shadowOffset: {width: 0,height: 4,},shadowOpacity: 0.5,shadowRadius: 2.5,elevation: 5,}}>
       <Ionicons name="ios-add" size={36} color="white" />
     </PlusButton>
     </Container> 

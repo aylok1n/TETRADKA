@@ -6,7 +6,7 @@ import DATA from '../Components/Data'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Page from '../Components/Page'
 import Images from '../Components/Images'
-import AddPage from '../Components/AddPage'
+import AddPageScreen from './AddPageScreen'
 
  
 function BookScreen({route, navigation}) {
@@ -34,7 +34,11 @@ function BookScreen({route, navigation}) {
         />
         </ScrollView>
         <PencilButton 
-          onPress={AddPage} 
+          onPress={() => navigation.navigate('AddPageScreen', {
+            Id: itemId,
+            Name: itemName,
+            Pages: itemPages,
+          })} 
           style ={{shadowColor: "#000",shadowOffset: {width: 0,height: 4,},shadowOpacity: 1.5,shadowRadius: 2.5,elevation: 10,}}>
           <MaterialCommunityIcons name="pencil-outline" size={30} color="white" />
         </PencilButton>
