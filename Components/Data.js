@@ -4,7 +4,7 @@ var DATA = [
       tittle: 'Ваши тетради',
       data: [
         {
-            id: "1",
+            id: 1,
             fullname: "Тетрадь 1",
             avatar: "https://source.unsplash.com/random/100x100?faces",
             pages: [
@@ -18,7 +18,7 @@ var DATA = [
             ]
         },
         {
-            id: "2",
+            id: 2,
             fullname: "Тетрадь 2",
             avatar: "https://sun7-6.userapi.com/s/v1/ig2/dvc3zsDzfRq2eTyFrVsuTDDsGGo5lzwOd1iCqM2tuhIxsscOpMkhQO1puXBAsmzjqoJCGzhw3Un3aAHQnCVEnmt8.jpg?size=50x0&quality=96&crop=1,3,1078,1078&ava=1",
             pages: [
@@ -34,8 +34,8 @@ var DATA = [
       tittle: 'Не ваши тетради',
       data: [
         {
-            id: "3",
-            fullname: "Тетрадь 3",
+            id: 8,
+            fullname: "Тетрадь 8",
             avatar: "https://source.unsplash.com/random/100x100?faces",
             pages: [  
               "https://sun9-57.userapi.com/impg/rVtafKKEOcymykLWo66_hC7aE0T9Fqa7oNlyxg/jCPsfWt_Y4Q.jpg?size=810x1080&quality=96&sign=762457809e0bee29d6094a5638ec66e0&type=album",
@@ -47,8 +47,8 @@ var DATA = [
         },
         {
 
-            id: "4",
-            fullname: "Тетрадь 4",
+            id: 9,
+            fullname: "Тетрадь 9",
             avatar: "https://sun7-6.userapi.com/s/v1/ig2/dvc3zsDzfRq2eTyFrVsuTDDsGGo5lzwOd1iCqM2tuhIxsscOpMkhQO1puXBAsmzjqoJCGzhw3Un3aAHQnCVEnmt8.jpg?size=50x0&quality=96&crop=1,3,1078,1078&ava=1",
             pages: [
             ]

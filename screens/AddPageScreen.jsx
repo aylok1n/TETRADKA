@@ -37,6 +37,7 @@ function AddPageScreen({route, navigation}) {
 
     if (!result.cancelled) {
       setImage(result.uri);
+      Pages.push(result.uri);
     }
   };
 
@@ -44,7 +45,6 @@ function AddPageScreen({route, navigation}) {
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Button title="Добавить фото из галереи" onPress={pickImage} />
       {image && <Image source={{ uri: image }} style={{ width: 400, height: 500 }} />}
-      
     </View>
   );
 }

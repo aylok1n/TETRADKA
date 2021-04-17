@@ -1,7 +1,5 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import { Button, StyleSheet, Text, View, } from 'react-native';
-import { Feather } from '@expo/vector-icons'; 
 import { useNavigation } from '@react-navigation/native';
 
 function Books({items, id, avatar,fullname, pages}) {
@@ -38,8 +36,6 @@ const TextAvatar = styled.Text`
   text-align: center;
   color: #00BFFF;
 `;
-
-
 
 const Avatar = styled.View`
   align-items: center;

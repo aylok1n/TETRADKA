@@ -1,14 +1,11 @@
 import React from 'react';
-import {StyleSheet, Text, View, SectionList,ScrollView, Button } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import {ScrollView, Button } from 'react-native';
 import styled from 'styled-components/native';
-import DATA from '../Components/Data'
+
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Page from '../Components/Page'
-import Images from '../Components/Images'
-import AddPageScreen from './AddPageScreen'
 
- 
+
 function BookScreen({route, navigation}) {
   const { itemId, itemName, itemPages} = route.params;
   const Options = React.useState(0);
@@ -48,14 +45,18 @@ function BookScreen({route, navigation}) {
   else {
     return (
       <Container>
-        <PencilButton onPress={AddPage} style ={{shadowColor: "#000",shadowOffset: {width: 0,height: 4,},shadowOpacity: 1.5,shadowRadius: 2.5,elevation: 10,}}>
+        <PencilButton 
+            onPress={() => navigation.navigate('AddPageScreen', {
+              Id: itemId,
+              Name: itemName,
+              Pages: itemPages,
+            })} 
+          style ={{shadowColor: "#000",shadowOffset: {width: 0,height: 4,},shadowOpacity: 1.5,shadowRadius: 2.5,elevation: 10,}}>
           <MaterialCommunityIcons name="pencil-outline" size={24} color="black" />
         </PencilButton>
         <ScrollView style={styled.scrollView}>
         <FullName>{itemName}</FullName>
-        
         <EmptyText>{itemName} пуста</EmptyText>
-  
         {/* <Button
           title= "На главную"
           onPress={() => navigation.navigate('HomeScreen')}
@@ -65,7 +66,6 @@ function BookScreen({route, navigation}) {
       </Container>
     )
   }
-
 }
 
 

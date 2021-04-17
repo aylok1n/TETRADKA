@@ -1,52 +1,35 @@
 import React from 'react';
-import {StyleSheet, Text, View, SectionList,ScrollView, Button,  SafeAreaView, TextInput  } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import {StyleSheet, View, Button,  SafeAreaView, TextInput  } from 'react-native';
 import styled from 'styled-components/native';
-import DATA from '../Components/Data'
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import Page from '../Components/Page'
-import Images from '../Components/Images'
-import AddPage from './AddPageScreen'
 
+
+import AddBook from '../Components/AddBook'
  
 function AddBookScreen({route, navigation}) {
-// const {  itemName } = route.params;
   const Options = React.useState(0);
+  const [text, onChangeText] = React.useState('');
   React.useLayoutEffect(() => {
     navigation.setOptions({
       headerTransparent: false,
       title: 'Добавить книгу',
-
     });
   }, [navigation, Options]);
 
     return (
-      <SafeAreaView>
-        <TextInput
-          style={styles.input}
-          onChangeText={"onChangeText"}
-          value={"itemName"}
-          placeholder="useless placeholder"
+      <View>
+        <SafeAreaView>
+          <TextInput
+            style={styles.input}
+            onChangeText={onChangeText}
+            value={text}
+            placeholder="Введите название книги"
+         />
+        </SafeAreaView>
+        <Button 
+          onPress={() => {AddBook(text), navigation.navigate('HomeScreen')}}
+          title= "Добавить"
         />
-    </SafeAreaView>
-    //   <Container onPress={() => navigation.navigate('AddBookScreen')}>
-    //     <ScrollView style={styled.scrollView}>
-    //     <FullName>{itemName}</FullName>
-        
-    //     {itemPages.map((page, id) => <Page key={id} source={{uri: page}} />)}
-  
-    //     <Button
-    //       title= "На главную"
-    //       onPress={() => navigation.navigate('HomeScreen')}
-    //       style = {{width:16, padding: 10}}
-    //     />
-    //     </ScrollView>
-    //     <PencilButton 
-    //       onPress={AddPage} 
-    //       style ={{shadowColor: "#000",shadowOffset: {width: 0,height: 4,},shadowOpacity: 1.5,shadowRadius: 2.5,elevation: 10,}}>
-    //       <MaterialCommunityIcons name="pencil-outline" size={30} color="white" />
-    //     </PencilButton>
-    //   </Container>
+      </View>
       )
   }
 

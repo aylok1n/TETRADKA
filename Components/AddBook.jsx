@@ -1,10 +1,19 @@
 import React from 'react';
-import { render } from 'react-dom';
-import styled from 'styled-components/native';
+
 import DATA from '../Components/Data'
 
-function AddBook() {
-    this.state
+function AddBook(fullname) {
 
-
+    return (
+        DATA[0].data.push({
+            id: DATA.length + 1,
+            fullname: fullname,
+            avatar: '',
+            pages: []
+        }),
+        console.log(DATA[0].data)
+        
+    )
 }
+
+export default AddBook

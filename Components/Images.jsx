@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import { useNavigation } from '@react-navigation/native';
-import { Button, StyleSheet, Text, View, Alert} from 'react-native';
+import { Button, View} from 'react-native';
 import Page from './Page'
 
 
