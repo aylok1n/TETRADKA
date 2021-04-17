@@ -4,7 +4,7 @@ const DATA = [
       tittle: 'Ваши тетради',
       data: [
         {
-            id: 1,
+            id: 0,
             fullname: "Тетрадь 1",
             pages: [
               "https://sun9-72.userapi.com/impg/UqE_3-N4liLHPJOTuL8FBLTQijHmU98PHGWA-g/svxHMhNREQM.jpg?size=1080x1440&quality=96&sign=634b2b439b12a20b7994a52c8bc8f82b&type=album",
@@ -17,7 +17,7 @@ const DATA = [
             ]
         },
         {
-            id: 2,
+            id: 1,
             fullname: "Тетрадь 2",
 
             pages: [

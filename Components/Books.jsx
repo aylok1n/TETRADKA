@@ -53,10 +53,11 @@ const BookItem = styled.TouchableOpacity`
   justify-content: center;
   flex-direction: row;
   padding: 15px 0;
-  borderBottomWidth: 1px ;
-  borderRadius: 50px;
-  borderColor: #E0FFFF;
+  borderWidth: 1px ;
+  borderRadius: 20px;
+  borderColor: #F4FFFF;
   padding:10px 15px;
+  margin:5px;
 `;
 
 export default Books

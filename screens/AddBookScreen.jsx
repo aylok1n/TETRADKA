@@ -6,7 +6,7 @@ import styled from 'styled-components/native';
 import AddBook from '../Components/AddBook'
  
 function AddBookScreen({route, navigation}) {
-  const { DATA } = route.params;
+  const { books, add } = route.params;
   const Options = React.useState(0);
   const [text, onChangeText] = React.useState('');
   React.useLayoutEffect(() => {
@@ -15,7 +15,16 @@ function AddBookScreen({route, navigation}) {
       title: 'Добавить книгу',
     });
   }, [navigation, Options]);
-
+  const AddBook = (books, add, text) => {
+    const newData = {
+        id:  books.length,
+        fullname: text ,
+        pages: [], 
+    }
+    return (
+      add([...books, newData])
+    )
+  }
     return (
       <View>
         <SafeAreaView>
@@ -27,7 +36,7 @@ function AddBookScreen({route, navigation}) {
          />
         </SafeAreaView>
         <Button 
-          onPress={() => {AddBook(DATA, text), navigation.navigate('HomeScreen')}}
+          onPress={() => {AddBook(books, add, text), navigation.navigate('HomeScreen')}}
           title= "Добавить"
         />
       </View>
