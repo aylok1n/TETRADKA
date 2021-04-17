@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components/native';
 import { useNavigation } from '@react-navigation/native';
 
-function Books({items, id, avatar,fullname, pages}) {
+function Books({id, fullname, pages}) {
   const navigation = useNavigation();
     return (
       <BookItem key ={id} onPress={() => navigation.navigate('BookScreen', {

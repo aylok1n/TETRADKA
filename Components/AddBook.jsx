@@ -1,8 +1,6 @@
 import React from 'react';
 
-import DATA from './Data'
-
-function AddBook(fullname) {
+function AddBook(DATA, fullname) {
     DATA[0].data.push({
         id: DATA.length + 1,
         fullname: fullname,
@@ -11,7 +9,7 @@ function AddBook(fullname) {
     }),
     console.log(DATA[0].data)
     return (
-        console.log(DATA)
+       DATA
     )
 }
 
