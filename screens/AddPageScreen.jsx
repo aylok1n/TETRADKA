@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Image, View, Platform } from 'react-native';
+import { Button, Image, View, Platform, Alert } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
-
+import Cam from '../Components/Cam'
+import styled from 'styled-components/native';
 function AddPageScreen({route, navigation}) {
-  const { Id, Name, Pages} = route.params;
+  const { Books, SetBooks, Id, Name, Pages} = route.params;
   const Options = React.useState(0);
   React.useLayoutEffect(() => {
     navigation.setOptions({
       headerTransparent: false,
-      title: 'Добавить фото из галереи',
+      title: 'Редактировать книгу',
 
     });
   }, [navigation, Options]);
@@ -41,12 +42,19 @@ function AddPageScreen({route, navigation}) {
     }
   };
 
+
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Button title="Добавить фото из галереи" onPress={pickImage} />
-      {image && <Image source={{ uri: image }} style={{ width: 400, height: 500 }} />}
+      {image && navigation.navigate('HomeScreen')}
+      <Button title="Открыть камеру" onPress={() => alert('Появится в будущих версиях')}/>
     </View>
   );
 }
 
+const DelBook = styled.TouchableOpacity`
+align-items: center, 
+top:100px;
+color: red;
+`
 export default AddPageScreen

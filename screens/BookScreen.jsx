@@ -1,19 +1,23 @@
 import React from 'react';
 import {ScrollView, Button } from 'react-native';
 import styled from 'styled-components/native';
-
+import { AntDesign } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Page from '../Components/Page'
 
 
 function BookScreen({route, navigation}) {
-  const { itemId, itemName, itemPages} = route.params;
+  const {itemId, itemName, itemPages} = route.params;
   const Options = React.useState(0);
   React.useLayoutEffect(() => {
     navigation.setOptions({
       headerTransparent: true,
       title: '',
-
+      headerRight: () => (
+        <Del  onPress={() => console.log(itemName)}>
+          <AntDesign name="delete" size={24} color="red" />
+        </Del>
+      ),
     });
   }, [navigation, Options]);
   if(itemPages != 0){
@@ -32,6 +36,7 @@ function BookScreen({route, navigation}) {
         </ScrollView>
         <PencilButton 
           onPress={() => navigation.navigate('AddPageScreen', {
+
             Id: itemId,
             Name: itemName,
             Pages: itemPages,
@@ -74,7 +79,11 @@ const BookName  = styled.Text `
   font-size: 28px;
   line-height: 30px;
 `;
-
+const Del = styled.TouchableOpacity`
+align-items: center;
+justify-content: center;
+right:15px;
+`;
 const Container = styled.View`
   flex: 1; 
   align-items: center;

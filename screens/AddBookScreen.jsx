@@ -1,12 +1,12 @@
 import React from 'react';
-import {StyleSheet, View, Button,  SafeAreaView, TextInput  } from 'react-native';
+import {StyleSheet, View, Button,  SafeAreaView, TextInput, Alert  } from 'react-native';
 import styled from 'styled-components/native';
 
 
 import AddBook from '../Components/AddBook'
  
 function AddBookScreen({route, navigation}) {
-  const { books, add } = route.params;
+  const { arr, add } = route.params;
   const Options = React.useState(0);
   const [text, onChangeText] = React.useState('');
   React.useLayoutEffect(() => {
@@ -15,14 +15,15 @@ function AddBookScreen({route, navigation}) {
       title: 'Добавить книгу',
     });
   }, [navigation, Options]);
-  const AddBook = (books, add, text) => {
+  const AddBook = (arr,add, text) => {
     const newData = {
-        id:  books.length,
+        id:  arr.length,
         fullname: text ,
         pages: [], 
     }
     return (
-      add([...books, newData])
+      // books.push(newData)
+      add([...arr, newData])
     )
   }
     return (
@@ -35,8 +36,16 @@ function AddBookScreen({route, navigation}) {
             placeholder="Введите название книги"
          />
         </SafeAreaView>
+
         <Button 
-          onPress={() => {AddBook(books, add, text), navigation.navigate('HomeScreen')}}
+          onPress={() => { 
+            if (text != '') {
+              AddBook(arr, add, text), 
+              navigation.navigate('HomeScreen'),
+              console.log(arr)
+            }
+            else alert("Введите название книги")
+          }}
           title= "Добавить"
         />
       </View>
