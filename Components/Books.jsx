@@ -4,21 +4,40 @@ import { useNavigation } from '@react-navigation/native';
 
 function Books({id, fullname, pages}) {
   const navigation = useNavigation();
+  if (fullname[0] != null){
     return (
       <BookItem key ={id} onPress={() => navigation.navigate('BookScreen', {
         itemId: id,
         itemName: fullname,
         itemPages: pages,
       })}>
-        <Avatar>
+        <Avatar>   
             <TextAvatar>
-              {fullname[0].toUpperCase()}{fullname[fullname.length -1].toUpperCase()}
-            </TextAvatar>
-          
+            {fullname[0].toUpperCase()}{fullname[fullname.length -1].toUpperCase()}
+          </TextAvatar>        
         </Avatar>
         <FullName>{fullname}</FullName>
       </BookItem>
     )
+  }
+  else{
+    return (
+      <BookItem key ={id} onPress={() => navigation.navigate('BookScreen', {
+        books: arr,
+        setBooks: setBooks,
+        itemId: id,
+        itemName: fullname,
+        itemPages: pages,
+      })}>
+        <Avatar>   
+            <TextAvatar>
+            ///
+          </TextAvatar>        
+        </Avatar>
+        <FullName>{fullname}</FullName>
+      </BookItem>
+    )
+  }
 };
 
   Books.defaultProps = {
@@ -50,7 +69,6 @@ const Avatar = styled.View`
 
 const BookItem = styled.TouchableOpacity`
   align-items: center;
-  justify-content: center;
   flex-direction: row;
   padding: 15px 0;
   borderWidth: 1px ;
