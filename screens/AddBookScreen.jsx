@@ -41,8 +41,8 @@ function AddBookScreen({route, navigation}) {
           onPress={() => { 
             if (text != '') {
               AddBook(arr, add, text), 
-              navigation.navigate('HomeScreen'),
-              console.log(arr)
+              navigation.navigate('HomeScreen')
+              // console.log(arr)
             }
             else alert("Введите название книги")
           }}

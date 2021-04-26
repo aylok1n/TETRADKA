@@ -4,19 +4,52 @@ import {ScrollView, Button, SectionList, View, Text, TouchableOpacity } from 're
 import { Ionicons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import DATA from '../Components/Data'
-
+import AsyncStorage, { useAsyncStorage } from '@react-native-async-storage/async-storage';
 import Books from '../Components/Books';
 import SectionTittle from '../Components/SectionTittle'
-import { TextInput } from 'react-native-gesture-handler';
+
 
 function HomeScreen({ navigation }) {
-
   const Options = React.useState(0);
-  const [arr, setArr] = React.useState(DATA[0].data);
-  React.useEffect(() =>{
-      
-  })
+  const [arr, setArr] = React.useState([])
+  const { getItem, setItem } = useAsyncStorage('books');
 
+  // React.useEffect(() =>{
+  //   const getData = async () => {
+  //     try {
+  //       const jsonValue = await AsyncStorage.getItem('Books')
+  //       return jsonValue != DATA[0].data ? setArr(JSON.parse(jsonValue))  : DATA[0].data;
+  //     } catch(e) {
+  
+  //       console.log("сосу значение")
+  //     }
+  //   }
+  // }, [])
+
+  // React.useEffect(() => {
+  //   AsyncStorage.setItem('Books', JSON.stringify(arr));
+  //   console.log("задаю значение")
+  //   console.log(arr)
+  // }, [arr])
+  const readItemFromStorage = async () => {
+    const item = await getItem();
+    item != null ? setArr(JSON.parse(item)) : alert('Добавьте свою первую книгу');
+  };
+
+  const writeItemToStorage = async newValue => {
+    await setItem(newValue);
+    setArr(JSON.stringify(newValue));
+  };
+
+  React.useEffect(() => { 
+    readItemFromStorage();
+  }, []);
+
+  React.useEffect(() => {
+    AsyncStorage.setItem('books', JSON.stringify(arr));
+    // console.log("задаю значение")
+    // console.log(arr)
+  }, [arr])
 
   React.useLayoutEffect(() => {
     navigation.setOptions({
@@ -39,8 +72,8 @@ function HomeScreen({ navigation }) {
     <Container>
      <ScrollView>
         <SectionTittle>Ваши Тетради</SectionTittle>
-        <Text>{arr.toString}</Text>
-        {arr.map((items, index) => <Books key={index} {...items}/>)}
+
+        {arr.map((items, index) => <Books  key={index} {...items}/>)}
 
       </ScrollView>
 

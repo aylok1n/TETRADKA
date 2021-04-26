@@ -7,6 +7,7 @@ function Books({id, fullname, pages}) {
   if (fullname[0] != null){
     return (
       <BookItem key ={id} onPress={() => navigation.navigate('BookScreen', {
+
         itemId: id,
         itemName: fullname,
         itemPages: pages,
@@ -23,8 +24,7 @@ function Books({id, fullname, pages}) {
   else{
     return (
       <BookItem key ={id} onPress={() => navigation.navigate('BookScreen', {
-        books: arr,
-        setBooks: setBooks,
+
         itemId: id,
         itemName: fullname,
         itemPages: pages,

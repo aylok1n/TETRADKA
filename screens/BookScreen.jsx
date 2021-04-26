@@ -9,13 +9,15 @@ import Page from '../Components/Page'
 function BookScreen({route, navigation}) {
   const {itemId, itemName, itemPages} = route.params;
   const Options = React.useState(0);
+
+
   React.useLayoutEffect(() => {
     navigation.setOptions({
       headerTransparent: true,
       title: '',
       headerRight: () => (
-        <Del  onPress={() => console.log(itemName)}>
-          <AntDesign name="delete" size={24} color="red" />
+        <Del  onPress={() => console.log(itemName)} >
+          <MaterialCommunityIcons name="pdf-box" size={30} color="black" />
         </Del>
       ),
     });
