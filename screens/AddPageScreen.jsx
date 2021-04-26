@@ -48,28 +48,29 @@ function AddPageScreen({route, navigation}) {
 
 
 ///DELETEBOOK
- const [arr, setArr] = React.useState()
- const { getItem, setItem } = useAsyncStorage('books');
+//  const [arr, setArr] = React.useState()
+//  const { getItem, setItem } = useAsyncStorage('books');
 
-  const readItemFromStorage = async () => {
-    const item = await getItem();
-    setArr(JSON.parse(item));
-  };
+//   const readItemFromStorage = async () => {
+//     const item = await getItem();
+//     setArr(JSON.parse(item));
+//   };
 
-  React.useEffect(() => { 
-    readItemFromStorage();
-  }, []);
+//   React.useEffect(() => { 
+//     readItemFromStorage();
+//   }, []);
 
   const DeleteBook = () => {
-    readItemFromStorage();
+//     readItemFromStorage();
 
-    arr.forEach((value, key) => {
-      if(value.id == Id)
-          delete arr[key]///ОШИБКА ТУТ
-    })
-    AsyncStorage.setItem('books', JSON.stringify(arr))
-    console.log(arr)
-    navigation.navigate('HomeScreen')
+//     arr.forEach((value, key) => {
+//       if(value.id == Id)
+//           delete arr[key]///ОШИБКА ТУТ
+//     })
+//     AsyncStorage.setItem('books', JSON.stringify(arr))
+//     console.log(arr)
+//     navigation.navigate('HomeScreen')
+    console.log("УГА БУГА")
   }
 
   return (
