@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 
-const Page = styled.Image`
+const PageItem = styled.Image`
 
 justify-content: center;
 width: 400px;
@@ -10,4 +10,4 @@ borderColor: #E0FFFF;
 margin: 5px;
 `;
 
-export default Page;
+export default PageItem;

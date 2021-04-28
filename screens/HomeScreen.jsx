@@ -1,54 +1,57 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import {ScrollView, Button, SectionList, View, Text, TouchableOpacity } from 'react-native';
+import {ScrollView,} from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
-import DATA from '../Components/Data'
-import AsyncStorage, { useAsyncStorage } from '@react-native-async-storage/async-storage';
+
+import { useAsyncStorage } from '@react-native-async-storage/async-storage';
 import Books from '../Components/Books';
 import SectionTittle from '../Components/SectionTittle'
+import { useIsFocused } from '@react-navigation/native'
 
 
-function HomeScreen({ navigation }) {
+function HomeScreen({route,navigation }) {
   const Options = React.useState(0);
   const [arr, setArr] = React.useState([])
   const { getItem, setItem } = useAsyncStorage('books');
 
-  // React.useEffect(() =>{
-  //   const getData = async () => {
-  //     try {
-  //       const jsonValue = await AsyncStorage.getItem('Books')
-  //       return jsonValue != DATA[0].data ? setArr(JSON.parse(jsonValue))  : DATA[0].data;
-  //     } catch(e) {
-  
-  //       console.log("сосу значение")
-  //     }
-  //   }
-  // }, [])
+  const isFocused = useIsFocused()
+
+  React.useEffect(() => {
+    readItemFromStorage();
+    // writeItemToStorage();
+    // writeItemToStorage()
+    console.log('read')
+  } , [isFocused])
 
   // React.useEffect(() => {
-  //   AsyncStorage.setItem('Books', JSON.stringify(arr));
-  //   console.log("задаю значение")
-  //   console.log(arr)
-  // }, [arr])
+  //   // readItemFromStorage();
+  //   writeItemToStorage();
+  //   // writeItemToStorage()
+  //   console.log('write')
+  // } , [isFocused != false])
+
   const readItemFromStorage = async () => {
     const item = await getItem();
     item != null ? setArr(JSON.parse(item)) : alert('Добавьте свою первую книгу');
   };
 
-  const writeItemToStorage = async newValue => {
-    await setItem(newValue);
-    setArr(JSON.stringify(newValue));
+  const writeItemToStorage = async  () => { 
+  await setItem(JSON.stringify(arr)); 
   };
 
-  React.useEffect(() => { 
-    readItemFromStorage();
-  }, []);
+  // React.useEffect(() => { 
+  //   readItemFromStorage();
+  //   console.log('readItemToStorage')
+  //   // return () => {
+  //   //   console.log('writeItemToStorage');
+  //   //   writeItemToStorage()
+  //   // }
+  // }, []);
 
   React.useEffect(() => {
-    AsyncStorage.setItem('books', JSON.stringify(arr));
-    // console.log("задаю значение")
-    // console.log(arr)
+    writeItemToStorage();  
+    console.log('writeItemToStorage');
   }, [arr])
 
   React.useLayoutEffect(() => {
@@ -61,7 +64,7 @@ function HomeScreen({ navigation }) {
         padding: 10,
       },
       headerRight: () => (
-        <Dots  onPress={() => alert('This is a button!')}>
+        <Dots  onPress={() => alert("подписывайся на мой инстаграм: @aylok1n")}>
           <Entypo name="dots-three-vertical" size={30} color="black" />
         </Dots>
       ),
@@ -73,15 +76,12 @@ function HomeScreen({ navigation }) {
      <ScrollView>
         <SectionTittle>Ваши Тетради</SectionTittle>
 
-        {arr.map((items, index) => <Books  key={index} {...items}/>)}
+        {arr.map((items, index,) => <Books  key={index} {...items} />)}
 
       </ScrollView>
 
       <PlusButton 
-        onPress={() => navigation.navigate('AddBookScreen',{
-          arr: arr, 
-          add: setArr,
-        })} 
+        onPress={() => navigation.navigate('AddBookScreen')} 
         style ={{shadowColor: "#000",shadowOffset: {width: 0,height: 4,},shadowOpacity: 0.5,shadowRadius: 2.5,elevation: 5,}}>
         <Ionicons name="ios-add" size={36} color="white" />
       </PlusButton>

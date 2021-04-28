@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import {Text, Button, Image, View, Platform, Alert, TouchableOpacity } from 'react-native';
+import {Button,View, Platform,} from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
-import Cam from '../Components/Cam'
-import AsyncStorage, { useAsyncStorage } from '@react-native-async-storage/async-storage';
+import { useAsyncStorage } from '@react-native-async-storage/async-storage';
 import styled from 'styled-components/native';
 
 function AddPageScreen({route, navigation}) {
-  const { Books, SetBooks, Id, Name, Pages} = route.params;
+  const {Id, Name, Pages} = route.params;
+  const { getItem, setItem } = useAsyncStorage('books');
   const Options = React.useState(0);
   React.useLayoutEffect(() => {
     navigation.setOptions({
@@ -39,62 +39,56 @@ function AddPageScreen({route, navigation}) {
     });
 
     console.log(result);
-
     if (!result.cancelled) {
       setImage(result.uri);
-      Pages.push(result.uri);
+      const item = await getItem()
+      const arr = (JSON.parse(item))
+      arr[Id].pages.push(result.uri)
+      setItem(JSON.stringify(arr));
+      console.log(arr)
+      navigation.navigate("HomeScreen")
+      // setTimeout(navigation.navigate("HomeScreen"), 1000)
     }
   };
 
-
-///DELETEBOOK
-//  const [arr, setArr] = React.useState()
-//  const { getItem, setItem } = useAsyncStorage('books');
-
-//   const readItemFromStorage = async () => {
-//     const item = await getItem();
-//     setArr(JSON.parse(item));
-//   };
-
-//   React.useEffect(() => { 
-//     readItemFromStorage();
-//   }, []);
-
-  const DeleteBook = () => {
-//     readItemFromStorage();
-
-//     arr.forEach((value, key) => {
-//       if(value.id == Id)
-//           delete arr[key]///ОШИБКА ТУТ
-//     })
-//     AsyncStorage.setItem('books', JSON.stringify(arr))
-//     console.log(arr)
-//     navigation.navigate('HomeScreen')
-    console.log("УГА БУГА")
+  const DeleteBook = async () => {
+    const item = await getItem()
+    const arr = (JSON.parse(item))
+    arr.splice('fullname' == Name, 1)
+    setItem(JSON.stringify(arr));
+    console.log('Это после', arr)
+    navigation.navigate("HomeScreen")
+    // setTimeout(navigation.navigate("HomeScreen"), 1000)
   }
+
 
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Button  title="Добавить фото из галереи" onPress={pickImage} />
-      {image && navigation.navigate('HomeScreen')}
-      <TouchableOpacity style={{marginTop: 10, fontSize: 15}} onPress={() => alert('Появится в будущих версиях')}>
+      {/* {image && navigation.navigate('BookScreen') } */}
+
+      {/* <TouchableOpacity style={{marginTop: 10, fontSize: 15}} onPress={() => alert('Появится в будущих версиях')}>
         <Text style={{color: '#8FBC8F'}}>Открыть камеру</Text>
-      </TouchableOpacity>
-      <DelBook onPress={DeleteBook}>
+      </TouchableOpacity> */}
+
+      <DelBook onPress={() => {
+        DeleteBook() 
+        // alert("книга удалена") && navigation.navigate("HomeScreen")
+      }}>
         <DelText>Удалить Книгу</DelText>
       </DelBook>
     </View>
   );
 }
 const AddBookScreen = styled.TouchableOpacity`
-alignItems: 'center'
-justifyContent: 'center'
+alignItems: center;
+justifyContent: center;
 `
 
 const DelBook = styled.TouchableOpacity`
-align-items: center,
-justifyContent: 'flex-end' 
-top:200px;
+align-items: center;
+justifyContent: flex-end;
+top:250px;
 `
 
 const DelText = styled.Text`

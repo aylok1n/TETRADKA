@@ -1,56 +1,61 @@
 import React from 'react';
 import {StyleSheet, View, Button,  SafeAreaView, TextInput, Alert  } from 'react-native';
 import styled from 'styled-components/native';
+import { useAsyncStorage } from '@react-native-async-storage/async-storage';
 
-
-import AddBook from '../Components/AddBook'
- 
 function AddBookScreen({route, navigation}) {
-  const { arr, add } = route.params;
-  const Options = React.useState(0);
+  const { getItem, setItem } = useAsyncStorage('books');
   const [text, onChangeText] = React.useState('');
+  // const { arr, add } = route.params;
+  const Options = React.useState(0);
+
   React.useLayoutEffect(() => {
     navigation.setOptions({
       headerTransparent: false,
       title: 'Добавить книгу',
     });
   }, [navigation, Options]);
-  const AddBook = (arr,add, text) => {
-    const newData = {
-        id:  arr.length,
-        fullname: text ,
-        pages: [], 
-    }
-    return (
-      // books.push(newData)
-      add([...arr, newData])
-    )
-  }
-    return (
-      <View>
-        <SafeAreaView>
-          <TextInput
-            style={styles.input}
-            onChangeText={onChangeText}
-            value={text}
-            placeholder="Введите название книги"
-         />
-        </SafeAreaView>
 
-        <Button 
-          onPress={() => { 
-            if (text != '') {
-              AddBook(arr, add, text), 
-              navigation.navigate('HomeScreen')
-              // console.log(arr)
-            }
-            else alert("Введите название книги")
-          }}
-          title= "Добавить"
-        />
-      </View>
-      )
+  const AddBook = async (text) => {
+    const item = await getItem()
+    const arr = (JSON.parse(item))
+    const newData = {
+      id:  arr.length,
+      fullname: text ,
+      pages: [], 
   }
+    arr.push(newData)
+    setItem(JSON.stringify(arr));
+    console.log(arr)
+    navigation.navigate("HomeScreen")
+    // setTimeout(navigation.navigate("HomeScreen"), 1000)
+  }
+
+  return (
+    <View>
+      <SafeAreaView>
+        <TextInput
+          style={styles.input}
+          onChangeText={onChangeText}
+          value={text}
+          placeholder="Введите название книги"
+        />
+      </SafeAreaView>
+
+      <Button 
+        onPress={() => { 
+          if (text != '') {
+            AddBook(text), 
+            alert(text + " добавлена")
+
+          }
+          else alert("Введите название книги")
+        }}
+        title= "Добавить"
+      />
+    </View>
+  )
+}
 
 const styles = StyleSheet.create({
   input: {

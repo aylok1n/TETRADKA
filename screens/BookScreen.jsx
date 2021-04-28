@@ -1,10 +1,9 @@
 import React from 'react';
 import {ScrollView, Button } from 'react-native';
 import styled from 'styled-components/native';
-import { AntDesign } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import Page from '../Components/Page'
-
+import PageItem from '../Components/PageItem'
+import CreatePDF from '../Components/CreatePDF'
 
 function BookScreen({route, navigation}) {
   const {itemId, itemName, itemPages} = route.params;
@@ -16,7 +15,7 @@ function BookScreen({route, navigation}) {
       headerTransparent: true,
       title: '',
       headerRight: () => (
-        <Del  onPress={() => console.log(itemName)} >
+        <Del  onPress={() => CreatePDF(itemId, itemName, itemPages)} >
           <MaterialCommunityIcons name="pdf-box" size={30} color="black" />
         </Del>
       ),
@@ -28,7 +27,7 @@ function BookScreen({route, navigation}) {
         <ScrollView style={styled.scrollView}>
         <FullName>{itemName}</FullName>
         
-        {itemPages.map((page, id) => <Page key={id} source={{uri: page}} />)}
+        {itemPages.map((page, id) => <PageItem key={id} source={{uri: page}} />)}
   
         <Button
           title= "На главную"
@@ -38,7 +37,6 @@ function BookScreen({route, navigation}) {
         </ScrollView>
         <PencilButton 
           onPress={() => navigation.navigate('AddPageScreen', {
-
             Id: itemId,
             Name: itemName,
             Pages: itemPages,
@@ -61,15 +59,15 @@ function BookScreen({route, navigation}) {
           style ={{shadowColor: "#000",shadowOffset: {width: 0,height: 4,},shadowOpacity: 1.5,shadowRadius: 2.5,elevation: 10,}}>
           <MaterialCommunityIcons name="pencil-outline" size={24} color="black" />
         </PencilButton>
-        <ScrollView style={styled.scrollView}>
+        <ScrollView style={{marginEnd:10}}>
         <FullName>{itemName}</FullName>
         <EmptyText>{itemName} пуста</EmptyText>
-        {/* <Button
+        </ScrollView>
+        <Button
           title= "На главную"
           onPress={() => navigation.navigate('HomeScreen')}
           style = {{width:16, margin: 'auto'}}
-        /> */}
-        </ScrollView>
+        />
       </Container>
     )
   }

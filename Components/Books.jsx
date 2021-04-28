@@ -4,10 +4,8 @@ import { useNavigation } from '@react-navigation/native';
 
 function Books({id, fullname, pages}) {
   const navigation = useNavigation();
-  if (fullname[0] != null){
     return (
-      <BookItem key ={id} onPress={() => navigation.navigate('BookScreen', {
-
+      <BookItem key ={id} onPress={() =>  navigation.navigate('BookScreen', {
         itemId: id,
         itemName: fullname,
         itemPages: pages,
@@ -20,29 +18,9 @@ function Books({id, fullname, pages}) {
         <FullName>{fullname}</FullName>
       </BookItem>
     )
-  }
-  else{
-    return (
-      <BookItem key ={id} onPress={() => navigation.navigate('BookScreen', {
-
-        itemId: id,
-        itemName: fullname,
-        itemPages: pages,
-      })}>
-        <Avatar>   
-            <TextAvatar>
-            ///
-          </TextAvatar>        
-        </Avatar>
-        <FullName>{fullname}</FullName>
-      </BookItem>
-    )
-  }
 };
 
-  Books.defaultProps = {
-      items: []
-  };
+
 
 const FullName = styled.Text`
   font-weight: bold;
