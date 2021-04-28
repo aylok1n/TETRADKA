@@ -41,13 +41,13 @@ function AddPageScreen({route, navigation}) {
     console.log(result);
     if (!result.cancelled) {
       setImage(result.uri);
-      const item = await getItem()
-      const arr = (JSON.parse(item))
+      const item = await getItem();
+      const arr = (JSON.parse(item));
       arr[Id].pages.push(result.uri)
+      // arr.splice('fullname' == Name, 1 , {id: Id, fullname: nameitem, pages: [...Pages,result.uri]})
       setItem(JSON.stringify(arr));
       console.log(arr)
       navigation.navigate("HomeScreen")
-      // setTimeout(navigation.navigate("HomeScreen"), 1000)
     }
   };
 
@@ -58,7 +58,7 @@ function AddPageScreen({route, navigation}) {
     setItem(JSON.stringify(arr));
     console.log('Это после', arr)
     navigation.navigate("HomeScreen")
-    // setTimeout(navigation.navigate("HomeScreen"), 1000)
+
   }
 
 

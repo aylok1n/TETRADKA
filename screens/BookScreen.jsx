@@ -62,12 +62,12 @@ function BookScreen({route, navigation}) {
         <ScrollView style={{marginEnd:10}}>
         <FullName>{itemName}</FullName>
         <EmptyText>{itemName} пуста</EmptyText>
-        </ScrollView>
         <Button
           title= "На главную"
           onPress={() => navigation.navigate('HomeScreen')}
-          style = {{width:16, margin: 'auto'}}
         />
+        </ScrollView>
+
       </Container>
     )
   }
