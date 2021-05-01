@@ -15,7 +15,7 @@ function BookScreen({route, navigation}) {
       headerTransparent: true,
       title: '',
       headerRight: () => (
-        <Del  onPress={() => CreatePDF(itemId, itemName, itemPages)} >
+        <Del  onPress={() => alert('Вот собственно, осталось только перегнать это все в пдф')} >
           <MaterialCommunityIcons name="pdf-box" size={30} color="black" />
         </Del>
       ),

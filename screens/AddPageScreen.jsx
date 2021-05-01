@@ -4,6 +4,8 @@ import * as ImagePicker from 'expo-image-picker';
 import { useAsyncStorage } from '@react-native-async-storage/async-storage';
 import styled from 'styled-components/native';
 
+
+
 function AddPageScreen({route, navigation}) {
   const {Id, Name, Pages} = route.params;
   const { getItem, setItem } = useAsyncStorage('books');
@@ -44,17 +46,18 @@ function AddPageScreen({route, navigation}) {
       const item = await getItem();
       const arr = (JSON.parse(item));
       arr[Id].pages.push(result.uri)
-      // arr.splice('fullname' == Name, 1 , {id: Id, fullname: nameitem, pages: [...Pages,result.uri]})
       setItem(JSON.stringify(arr));
       console.log(arr)
       navigation.navigate("HomeScreen")
     }
   };
 
+  
   const DeleteBook = async () => {
     const item = await getItem()
     const arr = (JSON.parse(item))
-    arr.splice('fullname' == Name, 1)
+    // const fn = arr[Id].fullname
+    arr.splice(('fullname' == Name),  1)
     setItem(JSON.stringify(arr));
     console.log('Это после', arr)
     navigation.navigate("HomeScreen")
@@ -65,15 +68,9 @@ function AddPageScreen({route, navigation}) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Button  title="Добавить фото из галереи" onPress={pickImage} />
-      {/* {image && navigation.navigate('BookScreen') } */}
-
-      {/* <TouchableOpacity style={{marginTop: 10, fontSize: 15}} onPress={() => alert('Появится в будущих версиях')}>
-        <Text style={{color: '#8FBC8F'}}>Открыть камеру</Text>
-      </TouchableOpacity> */}
 
       <DelBook onPress={() => {
         DeleteBook() 
-        // alert("книга удалена") && navigation.navigate("HomeScreen")
       }}>
         <DelText>Удалить Книгу</DelText>
       </DelBook>

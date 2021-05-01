@@ -45,8 +45,8 @@ function AddBookScreen({route, navigation}) {
       <Button 
         onPress={() => { 
           if (text != '') {
-            AddBook(text), 
-            alert(text + " добавлена")
+            AddBook(text) 
+            // alert(text + " добавлена")
 
           }
           else alert("Введите название книги")

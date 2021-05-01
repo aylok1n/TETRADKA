@@ -2,14 +2,16 @@ import React from 'react';
 import styled from 'styled-components/native';
 import { useNavigation } from '@react-navigation/native';
 
-function Books({id, fullname, pages}) {
+function Books({id, fullname, pages} ) {
   const navigation = useNavigation();
     return (
-      <BookItem key ={id} onPress={() =>  navigation.navigate('BookScreen', {
-        itemId: id,
-        itemName: fullname,
-        itemPages: pages,
-      })}>
+      <BookItem key ={id} onPress={() =>  
+        navigation.navigate('BookScreen', {
+          itemId: id,
+          itemName: fullname,
+          itemPages: pages,
+        })
+      }>
         <Avatar>   
             <TextAvatar>
             {fullname[0].toUpperCase()}{fullname[fullname.length -1].toUpperCase()}

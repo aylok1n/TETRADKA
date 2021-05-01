@@ -1,9 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import {ScrollView,} from 'react-native';
+import {ScrollView,Text} from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { Entypo } from '@expo/vector-icons';
-
 import { useAsyncStorage } from '@react-native-async-storage/async-storage';
 import Books from '../Components/Books';
 import SectionTittle from '../Components/SectionTittle'
@@ -19,17 +17,10 @@ function HomeScreen({route,navigation }) {
 
   React.useEffect(() => {
     readItemFromStorage();
-    // writeItemToStorage();
-    // writeItemToStorage()
     console.log('read')
+    setArr(arr)
   } , [isFocused])
 
-  // React.useEffect(() => {
-  //   // readItemFromStorage();
-  //   writeItemToStorage();
-  //   // writeItemToStorage()
-  //   console.log('write')
-  // } , [isFocused != false])
 
   const readItemFromStorage = async () => {
     const item = await getItem();
@@ -39,15 +30,6 @@ function HomeScreen({route,navigation }) {
   const writeItemToStorage = async  () => { 
   await setItem(JSON.stringify(arr)); 
   };
-
-  // React.useEffect(() => { 
-  //   readItemFromStorage();
-  //   console.log('readItemToStorage')
-  //   // return () => {
-  //   //   console.log('writeItemToStorage');
-  //   //   writeItemToStorage()
-  //   // }
-  // }, []);
 
   React.useEffect(() => {
     writeItemToStorage();  
@@ -64,8 +46,8 @@ function HomeScreen({route,navigation }) {
         padding: 10,
       },
       headerRight: () => (
-        <Dots  onPress={() => alert("подписывайся на мой инстаграм: @aylok1n")}>
-          <Entypo name="dots-three-vertical" size={30} color="black" />
+        <Dots  onPress={() => setArr([])}>
+          <Text style={{color: 'red'}}>Clear</Text>
         </Dots>
       ),
     });
@@ -88,8 +70,6 @@ function HomeScreen({route,navigation }) {
     </Container> 
   );
 }
-
-
 
 export default HomeScreen;
 
